@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int *data;
+int N;
+
+void init_array(int n);
+void print_array();
+void selection_sort();
+void insertion_sort();
+void bubble_sort();
+void shell_sort();
+void quick_sort(int l,int r);
+void merge_sort(int l,int r);
+
+int main(){
+  
+}
+

@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int *data;
+int N;
+
+void init_array(int length);
+void print_array();
+int linear_search(int x);
+int binary_search(int x);
+void quick_sort(int l,int r);
+
+int main(){
+  int index;
+  int look;
+  init_array(10);
+  print_array();
+  look = N/2;
+  printf("Looking for: %d\n",look);
+  index = linear_search(look);
+  if (index>=0)
+    printf("%d\n",index);
+  else
+    printf("Not found\n");
+  return 0;
+}
+
+void init_array(int length){
+  N = length;
+  data = (int*)malloc(N * (sizeof *data));
+  srand(time(NULL));
+  for(int i = 0;i<N;i++)
+    data[i] = rand()%N;
+}
+
+void print_array(){
+  int i;
+  for(i=0;i<N;i++)
+    printf("%d ",data[i]);
+  printf("\n");
+}
+
+int linear_search(int x){
+  int i;
+  for(int i = 0;i<N;i++)
+    if(data[i] == x)
+      return i;
+  return -1;
+}
+
+int binary_search(int x){
+  int a,b,m;
+  a = 0;
+  b = N-1;
+  while(a<b){
+    m = (a+b)/2;
+    if(x < data[m])
+      b = m;
+    else
+      a = m;
+  }
+  return x==data[b]?b:-1;
+}
+
+void quick_sort(int l,int r){
+  if(r<=l)
+    return;
+  int pivot,left,right,tmp;
+  left = l;
+  right = r;
+  while(right>left){
+    while(data[left]<data[pivot]){left++;}
+    while(data[right]>data[pivot]){right--;}
+    
+  }
+  quick_sort(l,pivot-1);
+  quick_sort(l,pivot+1);
+}
